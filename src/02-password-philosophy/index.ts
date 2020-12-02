@@ -39,12 +39,15 @@ export const parsePasswordAndPolicy = (
   character: string;
   numbers: [number, number];
 } => {
-  const [numbersWithDash, characterWithColon, password] = passwordAndPolicy.split(" ");
-  const [firstNumber, secondNumber] = numbersWithDash.split("-");
+  const match = passwordAndPolicy.match(/(\d+)-(\d+) (\w): (\w+)/);
+
+  if (!match) throw new Error(`Cannot parse ${passwordAndPolicy}`);
+
+  const [, firstNumber, secondNumber, character, password] = match;
 
   return {
     password,
-    character: characterWithColon.slice(0, -1),
-    numbers: [parseInt(firstNumber, 10), parseInt(secondNumber, 10)],
+    character,
+    numbers: [parseInt(firstNumber), parseInt(secondNumber)],
   };
 };
