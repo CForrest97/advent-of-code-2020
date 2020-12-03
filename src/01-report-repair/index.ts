@@ -1,4 +1,4 @@
-import sortNumbers from "../utils/sort-numbers";
+import sortNumbersIntoAscendingOrder from "../utils/sort-numbers";
 
 export const part1 = (numbers: number[]): number => {
   const [entry1, entry2] = get2NumbersWhichSumToTarget(numbers, 2020);
@@ -13,7 +13,7 @@ export const part2 = (numbers: number[]): number => {
 };
 
 export const get3NumbersWhichSumTo2020 = (numbers: number[]): [number, number, number] => {
-  const sortedNumbers = sortNumbers(numbers);
+  const sortedNumbers = sortNumbersIntoAscendingOrder(numbers);
 
   for (let i = 0; i < sortedNumbers.length - 2; i++) {
     const entry1 = sortedNumbers[i];
@@ -27,7 +27,7 @@ export const get3NumbersWhichSumTo2020 = (numbers: number[]): [number, number, n
 };
 
 export const get2NumbersWhichSumToTarget = (numbers: number[], target: number): [number, number] => {
-  const sortedNumbers = sortNumbers(numbers);
+  const sortedNumbers = sortNumbersIntoAscendingOrder(numbers);
 
   let lowerBound = 0;
   let upperBound = sortedNumbers.length - 1;

@@ -5,8 +5,8 @@ const parseListOfNumbers = async (path: string): Promise<number[]> => {
 
   return buffer
     .toString()
+    .trim()
     .split("\n")
-    .slice(0, -1)
     .map((n) => parseInt(n, 10));
 };
 
