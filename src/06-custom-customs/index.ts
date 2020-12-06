@@ -1,13 +1,13 @@
 const split = (on: string) => (s: string) => s.split(on);
 const size = (set: Set<string>): number => set.size;
-const sum = (a: number, b: number) => a + b;
+const sum = (a: number, b: number): number => a + b;
 
-const union = (sets: Set<string>[]) =>
+const union = (sets: Set<string>[]): Set<string> =>
   new Set(sets.reduce((acc: string[], x: Set<string>) => [...acc, ...Array.from(x)], []));
-const intersection = (sets: Set<string>[]) =>
+const intersection = (sets: Set<string>[]): Set<string> =>
   sets.reduce((acc: Set<string>, x: Set<string>) => new Set([...Array.from(acc)].filter((string) => x.has(string))));
 
-const createSetFromString = (s: string) => new Set(s);
+const createSetFromString = (s: string): Set<string> => new Set(s);
 const createSetsFromStrings = (strings: string[]): Set<string>[] => strings.map(createSetFromString);
 
 export const part1 = (groups: string[]): number =>
