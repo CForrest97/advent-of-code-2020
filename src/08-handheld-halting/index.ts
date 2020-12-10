@@ -24,13 +24,12 @@ const parseCommand = (command: string): Command => {
   };
 };
 
-export const part1 = (commandStrings: string[]) => {
+export const part1 = (commandStrings: string[]): number => {
   const commands: Command[] = commandStrings.map(parseCommand);
 
   let acc = 0;
   let currentIndex = 0;
   const visistedCommands = new Set<number>();
-  let sum = 0;
 
   while (!visistedCommands.has(currentIndex)) {
     visistedCommands.add(currentIndex);
@@ -42,7 +41,6 @@ export const part1 = (commandStrings: string[]) => {
 
       case Instruction.jmp:
         currentIndex += command.argument;
-        sum += 1;
         break;
 
       case Instruction.acc:
@@ -89,7 +87,7 @@ export const runProgram = (commands: Command[]): number => {
   return acc;
 };
 
-export const part2 = (commandStrings: string[]) => {
+export const part2 = (commandStrings: string[]): number => {
   const commands: Command[] = commandStrings.map(parseCommand);
 
   const jmpIndexes: number[] = commands.reduce(
